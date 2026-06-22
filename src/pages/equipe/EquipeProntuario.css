@@ -1,0 +1,124 @@
+.prontuario-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.busca-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  font-size: 0.9rem;
+}
+
+.lista-pacientes {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.paciente-linha {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+}
+
+.paciente-linha:hover {
+  background: var(--color-bg);
+}
+
+.paciente-linha--ativo {
+  background: var(--color-primary);
+  color: white;
+}
+
+.paciente-linha-cpf {
+  font-size: 0.76rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.prontuario-nome {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.prontuario-secao {
+  margin-top: 24px;
+}
+
+.prontuario-secao h3 {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: var(--color-ink);
+}
+
+.prontuario-item {
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+}
+
+.prontuario-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.prontuario-item-data {
+  font-size: 0.76rem;
+  color: var(--color-ink-soft);
+}
+
+.prontuario-item-obs {
+  color: var(--color-ink-soft);
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+.prontuario-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.prontuario-timeline li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 0.88rem;
+}
+
+.prontuario-timeline-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  background: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .prontuario-grid {
+    grid-template-columns: 1fr;
+  }
+}

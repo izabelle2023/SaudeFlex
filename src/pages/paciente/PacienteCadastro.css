@@ -1,0 +1,110 @@
+.cadastro-card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 40px 36px;
+  box-shadow: var(--shadow-soft);
+  align-self: flex-start;
+  margin-top: 24px;
+}
+
+.cadastro-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+
+.cadastro-card h1 {
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+}
+
+.cadastro-sub {
+  color: var(--color-ink-soft);
+  margin-bottom: 28px;
+}
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cadastro-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  flex: 1;
+}
+
+.cadastro-form input,
+.cadastro-form select,
+.cadastro-form textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-size: 0.95rem;
+}
+
+.cadastro-form input:focus,
+.cadastro-form select:focus,
+.cadastro-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.cadastro-row {
+  display: flex;
+  gap: 16px;
+}
+
+.cadastro-erro {
+  background: var(--color-emergencia-soft);
+  color: var(--color-emergencia);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.cadastro-btn {
+  margin-top: 8px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background 0.15s ease;
+}
+
+.cadastro-btn:hover {
+  background: var(--color-primary-light);
+}
+
+.cadastro-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 560px) {
+  .cadastro-card {
+    padding: 28px 22px;
+  }
+  .cadastro-row {
+    flex-direction: column;
+    gap: 18px;
+  }
+}

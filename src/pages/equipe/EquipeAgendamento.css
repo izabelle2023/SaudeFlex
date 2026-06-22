@@ -1,0 +1,108 @@
+.agendamento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.form-titulo {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+}
+
+.agendamento-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.campo input, .campo select {
+  padding: 11px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  font-size: 0.92rem;
+  color: var(--color-ink);
+}
+
+.campo-linha {
+  display: flex;
+  gap: 14px;
+}
+
+.campo-linha .campo {
+  flex: 1;
+}
+
+.campo-aviso {
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+}
+
+.msg-erro {
+  background: var(--color-emergencia-soft);
+  color: var(--color-emergencia);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.msg-ok {
+  background: var(--color-normal-soft);
+  color: var(--color-normal);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.lista-consultas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.consulta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+}
+
+.consulta-paciente {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.consulta-medico {
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+}
+
+.consulta-data {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+  .agendamento-grid {
+    grid-template-columns: 1fr;
+  }
+}

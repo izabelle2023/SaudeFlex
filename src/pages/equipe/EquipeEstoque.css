@@ -1,0 +1,65 @@
+.tabela-estoque {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-estoque th {
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+  padding: 0 14px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tabela-estoque td {
+  padding: 14px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+.tabela-estoque tr:last-child td {
+  border-bottom: none;
+}
+
+.celula-nome {
+  font-weight: 700;
+}
+
+.linha-alerta {
+  background: var(--color-emergencia-soft);
+}
+
+.qtd-baixa {
+  color: var(--color-emergencia);
+  font-weight: 700;
+}
+
+.ajuste-controles {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-ajuste {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.btn-ajuste:hover {
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 700px) {
+  .tabela-estoque {
+    font-size: 0.82rem;
+  }
+  .tabela-estoque th:nth-child(2), .tabela-estoque td:nth-child(2) {
+    display: none;
+  }
+}

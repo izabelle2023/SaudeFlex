@@ -1,0 +1,92 @@
+.setor-bloco {
+  margin-bottom: 30px;
+}
+
+.setor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.setor-header h2 {
+  font-size: 1.15rem;
+}
+
+.setor-contagem {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-normal);
+  background: var(--color-normal-soft);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.setor-contagem--cheio {
+  color: var(--color-emergencia);
+  background: var(--color-emergencia-soft);
+}
+
+.leitos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.leito-card {
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leito-card--livre {
+  background: var(--color-surface);
+}
+
+.leito-card--ocupado {
+  background: var(--color-amber-soft);
+  border-color: var(--color-amber);
+}
+
+.leito-numero {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.leito-paciente {
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+  font-weight: 600;
+}
+
+.leito-btn {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+}
+
+.lista-pacientes-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.paciente-modal-item {
+  text-align: left;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.paciente-modal-item:hover {
+  border-color: var(--color-primary);
+}
