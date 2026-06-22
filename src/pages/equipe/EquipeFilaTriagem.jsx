@@ -6,7 +6,7 @@ import {
   atualizarStatusTriagem,
   listarTriagens,
   PRIORIDADES,
-} from '../../utils/db.js'
+} from '../../utils/api.js'
 import PrioridadeBadge from '../../components/PrioridadeBadge.jsx'
 import './EquipeComum.css'
 import './EquipeFilaTriagem.css'

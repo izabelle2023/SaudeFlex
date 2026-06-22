@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { buscarPaciente, listarTriagens, registrarTriagem, atualizarStatusTriagem, PRIORIDADES } from '../../utils/db.js'
+import { buscarPaciente, listarTriagens, registrarTriagem, atualizarStatusTriagem, PRIORIDADES } from '../../utils/api.js'
 import '../paciente/PacienteCadastro.css'
 import './EquipeTriagemForm.css'
 

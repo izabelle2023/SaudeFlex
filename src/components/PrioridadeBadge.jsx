@@ -1,4 +1,4 @@
-import { PRIORIDADES } from '../utils/db.js'
+import { PRIORIDADES } from '../utils/api.js'
 import './PrioridadeBadge.css'
 
 export default function PrioridadeBadge({ prioridade, size = 'md' }) {

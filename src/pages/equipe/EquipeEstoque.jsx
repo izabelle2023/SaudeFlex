@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { listarEstoque, ajustarEstoque, adicionarItemEstoque } from '../../utils/db.js'
+import { listarEstoque, ajustarEstoque, adicionarItemEstoque } from '../../utils/api.js'
 import './EquipeComum.css'
 import './EquipeEstoque.css'
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { listarPacientes, listarHistorico, listarTriagens, listarAgendamentos, listarMedicos } from '../../utils/db.js'
+import { listarPacientes, listarHistorico, listarTriagens, listarAgendamentos, listarMedicos } from '../../utils/api.js'
 import PrioridadeBadge from '../../components/PrioridadeBadge.jsx'
 import './EquipeComum.css'
 import './EquipeProntuario.css'

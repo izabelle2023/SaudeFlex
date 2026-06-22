@@ -112,6 +112,25 @@ export function salvarPaciente(dados) {
   return novo
 }
 
+// -- Sincronização simples com backend (quando disponível) --
+async function apiFetch(path, options = {}) {
+  const base = window.__SAUDEFLEX_API_BASE__ || ''
+  try {
+    const res = await fetch(base + path, options)
+    if (!res.ok) throw new Error('api_error')
+    return await res.json()
+  } catch (e) {
+    return null
+  }
+}
+
+export async function syncSalvarPaciente(dados) {
+  const saved = salvarPaciente(dados)
+  // tenta enviar ao backend, ignora falhas
+  apiFetch('/api/pacientes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(saved) })
+  return saved
+}
+
 // ---------- Triagem ----------
 // Prioridade segue o Protocolo de Manchester (5 níveis por cor):
 // vermelho (emergência) > laranja (muito urgente) > amarelo (urgente) > verde (pouca urgência) > azul (não urgente)

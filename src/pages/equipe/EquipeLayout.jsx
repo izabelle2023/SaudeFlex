@@ -1,5 +1,5 @@
 import { Outlet, NavLink, Link } from 'react-router-dom'
-import { alertasNaoLidos } from '../../utils/db.js'
+import { alertasNaoLidos } from '../../utils/api.js'
 import './EquipeLayout.css'
 
 const NAV_ITEMS = [

@@ -5,7 +5,7 @@ import {
   listarAgendamentos,
   criarAgendamento,
   cancelarAgendamento,
-} from '../../utils/db.js'
+} from '../../utils/api.js'
 import './EquipeComum.css'
 import './EquipeAgendamento.css'
 

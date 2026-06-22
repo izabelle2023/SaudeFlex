@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { listarLeitos, listarPacientes, ocuparLeito, liberarLeito } from '../../utils/db.js'
+import { listarLeitos, listarPacientes, ocuparLeito, liberarLeito } from '../../utils/api.js'
 import './EquipeComum.css'
 import './EquipeLeitos.css'
 

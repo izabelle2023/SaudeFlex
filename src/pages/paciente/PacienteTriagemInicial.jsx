@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { buscarPaciente, registrarTriagem } from '../../utils/db.js'
+import { buscarPaciente, registrarTriagem } from '../../utils/api.js'
 import './PacienteCadastro.css'
 import './PacienteTriagemInicial.css'
 

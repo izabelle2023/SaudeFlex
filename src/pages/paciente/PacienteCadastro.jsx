@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { salvarPaciente, buscarPacientePorCPF } from '../../utils/db.js'
+import { salvarPaciente, buscarPacientePorCPF } from '../../utils/api.js'
 import './PacienteCadastro.css'
 
 function formatarCPF(value) {

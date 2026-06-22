@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { listarAlertas, marcarAlertaLido, buscarPaciente } from '../../utils/db.js'
+import { listarAlertas, marcarAlertaLido, buscarPaciente } from '../../utils/api.js'
 import './EquipeComum.css'
 import './EquipeAlertas.css'
 

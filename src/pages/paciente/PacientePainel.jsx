@@ -7,7 +7,7 @@ import {
   listarHistorico,
   listarAgendamentos,
   listarMedicos,
-} from '../../utils/db.js'
+} from '../../utils/api.js'
 import PrioridadeBadge from '../../components/PrioridadeBadge.jsx'
 import './PacientePainel.css'
 
