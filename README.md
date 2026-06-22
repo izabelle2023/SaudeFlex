@@ -6,12 +6,26 @@ Sistema hospitalar simplificado com dois fluxos completos: **paciente** (cadastr
 
 ## Como rodar
 
+### Frontend
+
 ```bash
 npm install
 npm run dev
 ```
 
 Acesse o endereço mostrado no terminal (normalmente `http://localhost:5173`).
+
+### Backend opcional
+
+O projeto agora inclui um servidor Express básico em `server/index.js`.
+
+```bash
+cd server
+npm install
+node index.js
+```
+
+Ele expõe uma API em `http://localhost:4000` e o frontend tenta sincronizar dados com esse backend quando disponível. Ainda há fallback local via `localStorage` para manter o app funcional sem servidor.
 
 ## Como usar
 
