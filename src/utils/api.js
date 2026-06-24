@@ -6,11 +6,27 @@ async function apiFetch(path, options = {}) {
   if (!BASE) return null
   try {
     const res = await fetch(BASE + path, options)
-    if (!res.ok) throw new Error('api_error')
+    if (!res.ok) return null
     return await res.json()
   } catch (e) {
     return null
   }
+}
+
+function normCpf(cpf) {
+  return (cpf || '').toString().replace(/\D/g, '')
+}
+
+async function apiGet(path) {
+  return await apiFetch(path)
+}
+
+async function apiPost(path, body) {
+  return await apiFetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+}
+
+async function apiPatch(path, body) {
+  return await apiFetch(path, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
 }
 
 export const PRIORIDADES = db.PRIORIDADES
@@ -22,17 +38,26 @@ export function listarPacientes() {
 }
 
 export function buscarPaciente(id) {
-  apiFetch(`/api/pacientes/${id}`).then(() => {})
+  apiGet(`/api/pacientes/${id}`).then((remote) => {
+    if (remote) {
+      db.salvarPaciente(remote)
+    }
+  })
   return db.buscarPaciente(id)
 }
 
 export function salvarPaciente(dados) {
   const local = db.salvarPaciente(dados)
-  apiFetch('/api/pacientes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(local) }).then(() => {})
+  apiPost('/api/pacientes', local).then((remote) => {
+    if (remote) db.salvarPaciente(remote)
+  })
   return local
 }
 
 export function buscarPacientePorCPF(cpf) {
+  apiGet(`/api/pacientes/search?cpf=${encodeURIComponent(cpf)}`).then((remote) => {
+    if (remote) db.salvarPaciente(remote)
+  })
   return db.buscarPacientePorCPF(cpf)
 }
 
@@ -49,7 +74,11 @@ export function registrarTriagem(obj) {
 }
 
 export function atualizarStatusTriagem(id, status) {
-  return db.atualizarStatusTriagem(id, status)
+  const local = db.atualizarStatusTriagem(id, status)
+  apiPatch(`/api/triagens/${id}/status`, { status }).then((remote) => {
+    if (remote) db.atualizarStatusTriagem(id, remote.status)
+  })
+  return local
 }
 
 export function filaDeAtendimento() {
@@ -73,7 +102,11 @@ export function criarAgendamento(obj) {
 }
 
 export function cancelarAgendamento(id) {
-  return db.cancelarAgendamento(id)
+  const local = db.cancelarAgendamento(id)
+  apiPatch(`/api/agendamentos/${id}/cancelar`, {}).then((remote) => {
+    if (remote) db.cancelarAgendamento(id)
+  })
+  return local
 }
 
 // Estoque
@@ -84,36 +117,59 @@ export function listarEstoque() {
 
 export function ajustarEstoque(itemId, delta) {
   const updated = db.ajustarEstoque(itemId, delta)
-  // no reliable server endpoint for adjust; attempt to POST an alert if low
-  if (updated && updated.quantidade < updated.minimo) {
-    apiFetch('/api/alertas', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tipo: 'estoque_baixo', titulo: `Estoque baixo: ${updated.nome}`, detalhe: `Quantidade atual: ${updated.quantidade}` }) })
-  }
+  apiPatch(`/api/estoque/${itemId}`, { delta }).then((remote) => {
+    if (remote) {
+      // keep local state in sync by re-applying if needed
+      db.ajustarEstoque(itemId, remote.quantidade - (updated?.quantidade || 0))
+    }
+  })
   return updated
 }
 
 export function adicionarItemEstoque(item) {
   const local = db.adicionarItemEstoque(item)
-  apiFetch('/api/estoque', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(local) })
+  apiPost('/api/estoque', local).then((remote) => {
+    if (remote) db.adicionarItemEstoque(remote)
+  })
   return local
 }
 
 // Leitos
 export function listarLeitos() {
+  apiGet('/api/leitos').then(() => {})
   return db.listarLeitos()
 }
 
 export function ocuparLeito(leitoId, pacienteId) {
   const local = db.ocuparLeito(leitoId, pacienteId)
+  apiPost('/api/leitos/ocupar', { leitoId, pacienteId }).then((remote) => {
+    if (remote) {
+      db.ocuparLeito(leitoId, pacienteId)
+    }
+  })
   return local
 }
 
 export function liberarLeito(leitoId) {
   const local = db.liberarLeito(leitoId)
+  apiPost('/api/leitos/liberar', { leitoId }).then((remote) => {
+    if (remote) db.liberarLeito(leitoId)
+  })
   return local
 }
 
 // Historico / Prontuario
 export function listarHistorico(pacienteId = null) {
+  apiGet(`/api/historico${pacienteId ? `?pacienteId=${encodeURIComponent(pacienteId)}` : ''}`).then((remote) => {
+    if (remote && pacienteId) {
+      // optional: keep local history in sync
+      remote.forEach((item) => {
+        if (!db.listarHistorico(pacienteId).find((h) => h.id === item.id)) {
+          db.registrarHistorico(item.pacienteId, item.tipo, item.descricao)
+        }
+      })
+    }
+  })
   return db.listarHistorico(pacienteId)
 }
 
@@ -128,7 +184,11 @@ export function alertasNaoLidos() {
 }
 
 export function marcarAlertaLido(id) {
-  return db.marcarAlertaLido(id)
+  const local = db.marcarAlertaLido(id)
+  apiPatch(`/api/alertas/${id}/lido`, {}).then((remote) => {
+    if (remote) db.marcarAlertaLido(id)
+  })
+  return local
 }
 
 export function criarAlerta(obj) {

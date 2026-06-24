@@ -10,19 +10,27 @@ Sistema hospitalar simplificado com dois fluxos completos: **paciente** (cadastr
 
 ```bash
 npm install
-npm run dev
+npm start
+```
+
+O comando `npm start` inicia o Vite localmente em vez de rodar a API do servidor.
+
+Se quiser iniciar frontend e backend juntos:
+
+```bash
+npm install
+npm run dev:all
 ```
 
 Acesse o endereço mostrado no terminal (normalmente `http://localhost:5173`).
 
 ### Backend opcional
 
-O projeto agora inclui um servidor Express básico em `server/index.js`.
+O projeto agora inclui um servidor Express básico em `server/index.js`, com dependências instaladas a partir do root.
 
 ```bash
-cd server
 npm install
-node index.js
+npm run server
 ```
 
 Ele expõe uma API em `http://localhost:4000` e o frontend tenta sincronizar dados com esse backend quando disponível. Ainda há fallback local via `localStorage` para manter o app funcional sem servidor.
@@ -54,4 +62,4 @@ e recarregue a página — os dados de exemplo voltam (médicos, leitos e estoqu
 
 ## Stack
 
-React + Vite + React Router, sem backend. Lógica de negócio centralizada em `src/utils/db.js`.
+React + Vite + React Router com backend Express opcional. Lógica de negócio centralizada em `src/utils/db.js`, e sincronização de API em `src/utils/api.js`.

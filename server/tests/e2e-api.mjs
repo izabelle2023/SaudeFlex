@@ -7,15 +7,32 @@ async function fetchJson(path, opts) {
   try { return { ok: res.ok, status: res.status, body: JSON.parse(text) } } catch { return { ok: res.ok, status: res.status, body: text } }
 }
 
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function waitForServer(retries = 10, interval = 500) {
+  for (let attempt = 1; attempt <= retries; attempt += 1) {
+    try {
+      const res = await fetch(BASE + '/api/pacientes')
+      if (res.ok) return
+    } catch (err) {
+      // ignore until the server is ready
+    }
+    if (attempt < retries) await delay(interval)
+  }
+  throw new Error(`Servidor não respondeu em ${BASE} após ${retries * interval}ms`)
+}
+
 async function assert(cond, msg) {
   if (!cond) {
-    console.error('ERRO:', msg)
-    process.exit(2)
+    throw new Error(msg)
   }
 }
 
-(async () => {
+;(async () => {
   console.log('Iniciando E2E API tests against', BASE)
+  await waitForServer()
 
   // 1) criar paciente
   const cpf = `000${Date.now() % 1000000}`
@@ -67,5 +84,7 @@ async function assert(cond, msg) {
   console.log('Leito liberado')
 
   console.log('E2E API tests finalizados com sucesso')
-  process.exit(0)
-})()
+})().catch((err) => {
+  console.error('ERRO:', err.message)
+  process.exitCode = 1
+})

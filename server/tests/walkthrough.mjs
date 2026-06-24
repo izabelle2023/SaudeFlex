@@ -7,8 +7,26 @@ async function fetchJson(path, opts) {
   try { return { ok: res.ok, status: res.status, body: JSON.parse(text) } } catch { return { ok: res.ok, status: res.status, body: text } }
 }
 
-(async () => {
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+async function waitForServer(retries = 10, interval = 500) {
+  for (let attempt = 1; attempt <= retries; attempt += 1) {
+    try {
+      const res = await fetch(BASE + '/api/pacientes')
+      if (res.ok) return
+    } catch (err) {
+      // ignore until the server is ready
+    }
+    if (attempt < retries) await delay(interval)
+  }
+  throw new Error(`Servidor não respondeu em ${BASE} após ${retries * interval}ms`)
+}
+
+;(async () => {
   console.log('Walkthrough rápido — verificando endpoints básicos')
+  await waitForServer()
   const endpoints = ['/api/pacientes', '/api/triagens', '/api/agendamentos', '/api/estoque', '/api/leitos', '/api/alertas']
   for (const e of endpoints) {
     try {
@@ -19,5 +37,7 @@ async function fetchJson(path, opts) {
     }
   }
   console.log('Walkthrough concluído')
-  process.exit(0)
-})()
+})().catch((err) => {
+  console.error('ERRO:', err.message)
+  process.exitCode = 1
+})

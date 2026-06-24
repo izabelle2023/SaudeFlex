@@ -1,10 +1,196 @@
 {
-  "pacientes": [],
-  "triagens": [],
-  "agendamentos": [],
+  "pacientes": [
+    {
+      "id": "pac_mqs5am8j_v38itl",
+      "criadoEm": "2026-06-24T14:04:57.235Z",
+      "nome": "Teste E2E",
+      "cpf": "000897028"
+    },
+    {
+      "id": "pac_mqs5chxl_dmkpdt",
+      "criadoEm": "2026-06-24T14:06:24.969Z",
+      "nome": "Teste E2E",
+      "cpf": "000984750"
+    },
+    {
+      "id": "pac_mqs5jm6l_lk0rvs",
+      "criadoEm": "2026-06-24T14:11:57.069Z",
+      "nome": "Teste E2E",
+      "cpf": "000317036"
+    },
+    {
+      "id": "pac_mqs5q07j_dlbd7v",
+      "criadoEm": "2026-06-24T14:16:55.183Z",
+      "cpf": "000608054",
+      "nome": "DirectTest"
+    },
+    {
+      "id": "pac_mqs5r887_w0dz19",
+      "criadoEm": "2026-06-24T14:17:52.231Z",
+      "nome": "Teste E2E",
+      "cpf": "000672088"
+    },
+    {
+      "id": "pac_mqs6hidz_63s48s",
+      "criadoEm": "2026-06-24T14:38:18.455Z",
+      "nome": "Teste E2E",
+      "cpf": "000898439"
+    }
+  ],
+  "triagens": [
+    {
+      "id": "tri_mqs4xpt8_sc7rbn",
+      "criadoEm": "2026-06-24T13:54:55.340Z",
+      "profissional": "Teste",
+      "pacienteId": "pac_test",
+      "prioridade": "verde",
+      "sintomas": "dor",
+      "status": "finalizado",
+      "finalizadoEm": "2026-06-24T13:55:00.784Z"
+    },
+    {
+      "id": "tri_mqs5r8a0_a3bqqz",
+      "criadoEm": "2026-06-24T14:17:52.296Z",
+      "pacienteId": "pac_mqs5r887_w0dz19",
+      "sintomas": "dor de cabeça",
+      "prioridade": "verde",
+      "profissional": "E2E",
+      "status": "finalizado",
+      "finalizadoEm": "2026-06-24T14:17:52.324Z"
+    },
+    {
+      "id": "tri_mqs6hiee_4reche",
+      "criadoEm": "2026-06-24T14:38:18.470Z",
+      "pacienteId": "pac_mqs6hidz_63s48s",
+      "sintomas": "dor de cabeça",
+      "prioridade": "verde",
+      "profissional": "E2E",
+      "status": "finalizado",
+      "finalizadoEm": "2026-06-24T14:38:18.475Z"
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": "ag_mqs4x9xr_qzbe55",
+      "criadoEm": "2026-06-24T13:54:34.768Z",
+      "dataHora": "2026-06-25T10:00",
+      "pacienteId": "pac_test",
+      "medicoId": "med_1",
+      "motivo": "Teste"
+    }
+  ],
   "medicos": [],
-  "estoque": [],
-  "leitos": [],
-  "historico": [],
-  "alertas": []
+  "estoque": [
+    {
+      "id": "est_mqs5r8bd_lxwbne",
+      "nome": "TesteMed",
+      "categoria": "Medicamento",
+      "quantidade": 2,
+      "minimo": 10,
+      "unidade": "un"
+    },
+    {
+      "id": "est_mqs6hies_vrh10k",
+      "nome": "TesteMed",
+      "categoria": "Medicamento",
+      "quantidade": 2,
+      "minimo": 10,
+      "unidade": "un"
+    }
+  ],
+  "leitos": [
+    {
+      "id": "leito_mqs5r8ct_e377vb",
+      "setor": "Teste",
+      "numero": "T-01",
+      "ocupado": false,
+      "pacienteId": null,
+      "ocupadoEm": null
+    },
+    {
+      "id": "leito_mqs6hif6_5y532r",
+      "setor": "Teste",
+      "numero": "T-01",
+      "ocupado": false,
+      "pacienteId": null,
+      "ocupadoEm": null
+    }
+  ],
+  "historico": [
+    {
+      "id": "hist_mqs4xu0g_3465fs",
+      "pacienteId": "pac_test",
+      "tipo": "atendimento",
+      "descricao": "Atendimento finalizado após triagem.",
+      "dataHora": "2026-06-24T13:55:00.784Z"
+    },
+    {
+      "id": "hist_mqs5r8as_xtn7qd",
+      "pacienteId": "pac_mqs5r887_w0dz19",
+      "tipo": "atendimento",
+      "descricao": "Atendimento finalizado após triagem.",
+      "dataHora": "2026-06-24T14:17:52.324Z"
+    },
+    {
+      "id": "hist_mqs5r8di_wwqsl5",
+      "pacienteId": "pac_mqs5r887_w0dz19",
+      "tipo": "internacao",
+      "descricao": "Internado no leito T-01 (Teste).",
+      "dataHora": "2026-06-24T14:17:52.422Z"
+    },
+    {
+      "id": "hist_mqs5r8e9_ov9yoq",
+      "pacienteId": "pac_mqs5r887_w0dz19",
+      "tipo": "alta",
+      "descricao": "Recebeu alta do leito T-01.",
+      "dataHora": "2026-06-24T14:17:52.449Z"
+    },
+    {
+      "id": "hist_mqs6hiej_3f40yy",
+      "pacienteId": "pac_mqs6hidz_63s48s",
+      "tipo": "atendimento",
+      "descricao": "Atendimento finalizado após triagem.",
+      "dataHora": "2026-06-24T14:38:18.475Z"
+    },
+    {
+      "id": "hist_mqs6hifb_fvuv2l",
+      "pacienteId": "pac_mqs6hidz_63s48s",
+      "tipo": "internacao",
+      "descricao": "Internado no leito T-01 (Teste).",
+      "dataHora": "2026-06-24T14:38:18.503Z"
+    },
+    {
+      "id": "hist_mqs6hifg_817204",
+      "pacienteId": "pac_mqs6hidz_63s48s",
+      "tipo": "alta",
+      "descricao": "Recebeu alta do leito T-01.",
+      "dataHora": "2026-06-24T14:38:18.508Z"
+    }
+  ],
+  "alertas": [
+    {
+      "id": "alerta_mqs5r8c7_mdqzks",
+      "tipo": "estoque_baixo",
+      "titulo": "Estoque baixo: TesteMed",
+      "detalhe": "Quantidade atual (2) abaixo do mínimo (10)",
+      "lido": false,
+      "criadoEm": "2026-06-24T14:17:52.375Z"
+    },
+    {
+      "id": "alerta_mqs5r8di_gtzgkw",
+      "tipo": "leitos_esgotados",
+      "titulo": "Leitos esgotados: Teste",
+      "detalhe": "Não há mais leitos disponíveis no setor Teste.",
+      "lido": false,
+      "criadoEm": "2026-06-24T14:17:52.422Z"
+    },
+    {
+      "id": "alerta_mqs6hiey_iuze6s",
+      "tipo": "estoque_baixo",
+      "titulo": "Estoque baixo: TesteMed",
+      "detalhe": "Quantidade atual (2) abaixo do mínimo (10)",
+      "lido": false,
+      "criadoEm": "2026-06-24T14:38:18.490Z"
+    }
+  ]
 }

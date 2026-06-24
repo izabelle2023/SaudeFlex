@@ -91,8 +91,13 @@ export function buscarPaciente(id) {
   return listarPacientes().find((p) => p.id === id) || null
 }
 
+function normCpf(cpf) {
+  return (cpf || '').toString().replace(/\D/g, '')
+}
+
 export function buscarPacientePorCPF(cpf) {
-  return listarPacientes().find((p) => p.cpf === cpf) || null
+  const target = normCpf(cpf)
+  return listarPacientes().find((p) => normCpf(p.cpf) === target) || null
 }
 
 export function salvarPaciente(dados) {
