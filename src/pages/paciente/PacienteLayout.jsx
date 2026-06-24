@@ -1,13 +1,13 @@
 import { Outlet, Link } from 'react-router-dom'
 import './PacienteLayout.css'
-import Logo from '../../components/Logo.jsx'
 
 export default function PacienteLayout() {
   return (
     <div className="paciente-shell">
       <header className="paciente-header">
         <Link to="/" className="paciente-logo">
-          <Logo compact />
+          <span className="paciente-logo-mark">+</span>
+          Saudeflex
         </Link>
         <Link to="/" className="paciente-exit">Sair</Link>
       </header>

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import './Home.css'
-import Logo from '../components/Logo.jsx'
 
 export default function Home() {
   return (
@@ -8,7 +7,8 @@ export default function Home() {
       <div className="home-glow" aria-hidden="true" />
       <header className="home-header">
         <div className="home-logo">
-          <Logo />
+          <span className="home-logo-mark">+</span>
+          Saudeflex
         </div>
       </header>
 
