@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0F3D3E"/>
-  <path d="M32 14 L32 50 M14 32 L50 32" stroke="#FF6B5B" stroke-width="8" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Saudeflex favicon">
+  <rect width="64" height="64" rx="12" fill="#F7F3EC"/>
+  <!-- heart outline -->
+  <path d="M32 14c-3.3 0-6.3 1.6-8.2 4.2C21 10.3 17.1 8 12.5 8 6.7 8 2 12.7 2 18.5 2 31.2 32 52 32 52s30-20.8 30-33.5C62 12.7 57.3 8 51.5 8c-4.6 0-8.5 2.3-11.3 6.2C38.3 11.6 35.3 10 32 10z"
+        fill="#0F3D3E" opacity="0.98" transform="scale(0.7) translate(9,6)" />
+
+  <!-- pulse line -->
+  <path d="M14 34h8l4-8 4 12 6-10h6"
+        stroke="#FF6B5B" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="scale(0.9) translate(3,0)" />
 </svg>
