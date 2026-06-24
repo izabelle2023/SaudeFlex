@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "server": "node server/index.js",
-    "dev:all": "concurrently \"npm run server\" \"npm run dev\""
+    "dev:all": "concurrently \"npm run server\" \"npm run dev\"",
+    "test:e2e": "node server/tests/e2e-api.mjs",
+    "test:walk": "node server/tests/walkthrough.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
