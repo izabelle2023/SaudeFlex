@@ -1,6 +1,7 @@
 import { Outlet, NavLink, Link } from 'react-router-dom'
 import { alertasNaoLidos } from '../../utils/api.js'
 import './EquipeLayout.css'
+import Logo from '../../components/Logo.jsx'
 
 const NAV_ITEMS = [
   { to: '/equipe', label: 'Fila de Triagem', icon: '🚑', end: true },
@@ -18,8 +19,7 @@ export default function EquipeLayout() {
     <div className="equipe-shell">
       <aside className="equipe-sidebar">
         <Link to="/" className="equipe-logo">
-          <span className="equipe-logo-mark">+</span>
-          Saudeflex
+          <Logo compact />
         </Link>
         <nav className="equipe-nav">
           {NAV_ITEMS.map((item) => (
