@@ -22,7 +22,14 @@ npm install
 npm run dev:all
 ```
 
-Acesse o endereço mostrado no terminal (normalmente `http://localhost:5173`).
+Ou rode apenas o servidor Express separado:
+
+```bash
+npm install
+npm run server
+```
+
+Acesse o endereço mostrado no terminal (normalmente `http://localhost:5173`) e confirme que o backend está no `http://localhost:4000`.
 
 ### Backend opcional
 
